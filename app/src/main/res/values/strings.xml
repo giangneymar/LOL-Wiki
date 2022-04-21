@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">LOL Wiki</string>
+    <string name="rank">Xếp Hạng</string>
+    <string name="language">Ngôn Ngữ</string>
+    <string name="feedback">Phản Hồi</string>
+    <string name="wallpaper">Đặt Hình Nền</string>
+    <string name="open_nav_drawer">Mở Navigation</string>
+    <string name="close_nav_drawer">Đóng Navigation</string>
+    <string name="search">Tìm Kiếm</string>
+    <string name="filter">Bộ Lọc</string>
+    <string name="hero">Tướng</string>
+    <string name="current_version">Version : 1.0</string>
+    <string name="vietnamese">Tiếng Việt</string>
+    <string name="english">Tiếng Anh</string>
+    <string name="feedback_upper">PHẢN HỒI</string>
+    <string name="enter_here">Nhập Vào Đây</string>
+    <string name="input">...</string>
+    <string name="evaluate">Đánh Giá App</string>
+    <string name="send">Send</string>
+    <string name="success">Thành Công</string>
+    <string name="disappointed">Quá thất vọng, cần cải thiện thêm -.-</string>
+    <string name="sad">Tôi đã mong đợi nhiều hơn :((</string>
+    <string name="fine">Cũng khá ổn đó !!!</string>
+    <string name="happy">Ứng dụng khá hữu ích đó, cảm ơn bạn</string>
+    <string name="blissful">Quá là tuyệt vời luôn, tôi sẽ giới thiệu bạn bè sử dụng</string>
+</resources>
