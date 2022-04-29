@@ -1,4 +1,4 @@
-package com.example.lolwiki.view.activity;
+package com.example.lolwiki.bases;
 
 import static com.example.lolwiki.utils.KeyConstant.LANGUAGE;
 import static com.example.lolwiki.utils.KeyConstant.LOCALE;
@@ -25,6 +25,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.lolwiki.R;
+import com.example.lolwiki.view.activity.ChampionActivity;
+import com.example.lolwiki.view.activity.FeedbackActivity;
+import com.example.lolwiki.view.activity.RankActivity;
+import com.example.lolwiki.view.activity.WallpaperActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Locale;
@@ -136,8 +140,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);
         switch (item.getItemId()) {
-            case R.id.hero:
-                startActivity(new Intent(this, HeroesActivity.class));
+            case R.id.champion:
+                startActivity(new Intent(this, ChampionActivity.class));
                 overridePendingTransition(0, 0);
                 break;
             case R.id.rank:

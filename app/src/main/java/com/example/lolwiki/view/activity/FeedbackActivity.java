@@ -3,25 +3,12 @@ package com.example.lolwiki.view.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Toast;
 
 import com.example.lolwiki.R;
+import com.example.lolwiki.bases.BaseActivity;
 import com.example.lolwiki.databinding.ActivityFeedbackBinding;
-import com.google.android.material.snackbar.Snackbar;
-
-import java.util.Properties;
-
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 public class FeedbackActivity extends BaseActivity {
     /*

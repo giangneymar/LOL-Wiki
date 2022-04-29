@@ -20,7 +20,7 @@ public class SplashActivity extends AppCompatActivity {
     private void forwardActivity() {
         Handler handler = new Handler();
         handler.postDelayed(() -> {
-            startActivity(new Intent(SplashActivity.this, HeroesActivity.class));
+            startActivity(new Intent(SplashActivity.this, ChampionActivity.class));
             finish();
         },500);
     }

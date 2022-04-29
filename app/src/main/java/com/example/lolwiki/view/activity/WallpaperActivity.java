@@ -1,22 +1,20 @@
 package com.example.lolwiki.view.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lolwiki.R;
+import com.example.lolwiki.bases.BaseActivity;
 import com.example.lolwiki.databinding.ActivityWallpaperBinding;
 import com.example.lolwiki.models.Wallpaper;
 import com.example.lolwiki.view.adapter.WallpaperAdapter;
 import com.example.lolwiki.viewmodels.WallpaperViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class WallpaperActivity extends BaseActivity {

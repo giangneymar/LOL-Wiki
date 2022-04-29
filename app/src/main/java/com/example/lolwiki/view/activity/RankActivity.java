@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 
 import com.example.lolwiki.R;
+import com.example.lolwiki.bases.BaseActivity;
 import com.example.lolwiki.databinding.ActivityRankBinding;
 
 public class RankActivity extends BaseActivity {

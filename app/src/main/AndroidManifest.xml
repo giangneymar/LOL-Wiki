@@ -26,7 +26,7 @@
             android:name=".view.activity.RankActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.HeroesActivity"
+            android:name=".view.activity.ChampionActivity"
             android:exported="false" />
         <activity
             android:name=".view.activity.SplashActivity"
