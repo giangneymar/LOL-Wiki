@@ -53,7 +53,7 @@ public class WallpaperActivity extends BaseActivity {
     }
 
     private void getImage() {
-        wallpaperViewModel.getImage().observe(this, this::updateRecyclerview);
+        wallpaperViewModel.getAllWallpaper().observe(this, this::updateRecyclerview);
     }
 
     /*

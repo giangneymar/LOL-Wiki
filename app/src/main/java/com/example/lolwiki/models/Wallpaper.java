@@ -3,12 +3,17 @@ package com.example.lolwiki.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 
+@Entity(tableName = "wallpaper")
 public class Wallpaper implements Serializable {
     /*
      * Area : variable
      */
+    @PrimaryKey
     private int id;
     private String image;
 
