@@ -1,9 +1,11 @@
 package com.example.lolwiki.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
@@ -29,7 +31,7 @@ public class ChampionActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityChampionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setActivityTitle((R.string.hero));
+        setActivityTitle((R.string.champion));
         checkItemNavigation(R.id.champion);
         viewModel = new ViewModelProvider(this).get(ViewModel.class);
         viewModel.getChampionsTierS().observe(this, new Observer<List<Champion>>() {
@@ -56,6 +58,12 @@ public class ChampionActivity extends BaseActivity {
                 Log.d("aaaaa", String.valueOf(champions.size()));
             }
         });
+        binding.btnTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ChampionActivity.this, ChampionDetailActivity.class));
+            }
+        });
     }
 
     /*
@@ -63,7 +71,7 @@ public class ChampionActivity extends BaseActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu_heroes, menu);
+        getMenuInflater().inflate(R.menu.toolbar_menu_champion, menu);
         return true;
     }
 
