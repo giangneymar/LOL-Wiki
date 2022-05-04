@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/champion"
-        android:icon="@drawable/ic_hero"
-        android:title="@string/hero" />
+        android:icon="@drawable/ic_champion"
+        android:title="@string/champion" />
     <item
         android:id="@+id/rank"
         android:icon="@drawable/ic_rank"
