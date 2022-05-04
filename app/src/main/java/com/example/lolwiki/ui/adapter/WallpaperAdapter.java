@@ -1,10 +1,9 @@
-package com.example.lolwiki.view.adapter;
+package com.example.lolwiki.ui.adapter;
 
 import static com.example.lolwiki.utils.KeyConstant.WALLPAPER;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -14,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.lolwiki.R;
 import com.example.lolwiki.databinding.ItemWallpaperBinding;
-import com.example.lolwiki.models.Wallpaper;
-import com.example.lolwiki.view.activity.WallpaperDetailActivity;
+import com.example.lolwiki.data.models.Wallpaper;
+import com.example.lolwiki.ui.activity.WallpaperDetailActivity;
 
 import java.util.List;
 

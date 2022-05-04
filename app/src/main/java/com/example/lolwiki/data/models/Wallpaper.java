@@ -1,7 +1,4 @@
-package com.example.lolwiki.models;
-
-import android.os.Parcel;
-import android.os.Parcelable;
+package com.example.lolwiki.data.models;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

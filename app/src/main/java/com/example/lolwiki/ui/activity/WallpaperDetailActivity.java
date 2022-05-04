@@ -1,24 +1,16 @@
-package com.example.lolwiki.view.activity;
+package com.example.lolwiki.ui.activity;
 
 import static com.example.lolwiki.utils.KeyConstant.WALLPAPER;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.app.WallpaperManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -27,7 +19,7 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.lolwiki.R;
 import com.example.lolwiki.databinding.ActivityWallpaperDetailBinding;
-import com.example.lolwiki.models.Wallpaper;
+import com.example.lolwiki.data.models.Wallpaper;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;

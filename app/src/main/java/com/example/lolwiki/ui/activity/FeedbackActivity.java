@@ -1,4 +1,4 @@
-package com.example.lolwiki.view.activity;
+package com.example.lolwiki.ui.activity;
 
 import android.content.Intent;
 import android.net.Uri;

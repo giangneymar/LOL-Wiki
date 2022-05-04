@@ -1,7 +1,5 @@
-package com.example.lolwiki.view.adapter;
+package com.example.lolwiki.ui.adapter;
 
-import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -12,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.lolwiki.R;
 import com.example.lolwiki.databinding.ItemChampionBinding;
 import com.example.lolwiki.databinding.ItemChampionSuperBinding;
-import com.example.lolwiki.models.Champion;
+import com.example.lolwiki.data.models.Champion;
 
 import java.util.List;
 

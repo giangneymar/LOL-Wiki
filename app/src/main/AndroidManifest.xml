@@ -14,22 +14,22 @@
         android:theme="@style/Theme.LOLWiki"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".view.activity.WallpaperDetailActivity"
+            android:name=".ui.activity.WallpaperDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.FeedbackActivity"
+            android:name=".ui.activity.FeedbackActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.WallpaperActivity"
+            android:name=".ui.activity.WallpaperActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.RankActivity"
+            android:name=".ui.activity.RankActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.ChampionActivity"
+            android:name=".ui.activity.ChampionActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.SplashActivity"
+            android:name=".ui.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

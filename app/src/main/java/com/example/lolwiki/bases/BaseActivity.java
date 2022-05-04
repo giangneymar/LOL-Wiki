@@ -25,10 +25,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.lolwiki.R;
-import com.example.lolwiki.view.activity.ChampionActivity;
-import com.example.lolwiki.view.activity.FeedbackActivity;
-import com.example.lolwiki.view.activity.RankActivity;
-import com.example.lolwiki.view.activity.WallpaperActivity;
+import com.example.lolwiki.ui.activity.ChampionActivity;
+import com.example.lolwiki.ui.activity.FeedbackActivity;
+import com.example.lolwiki.ui.activity.RankActivity;
+import com.example.lolwiki.ui.activity.WallpaperActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Locale;
