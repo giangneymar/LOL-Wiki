@@ -51,15 +51,15 @@ public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         if(champion==null){
             return;
         }
-        if(TYPE_CHAMPION_SUPER == holder.getItemViewType()){
-            ItemChampionSuperHolder itemChampionSuperHolder = (ItemChampionSuperHolder) holder;
-            itemChampionSuperHolder.binding.image.setBackgroundColor(Color.RED);
-            itemChampionSuperHolder.binding.name.setText(champion.getName());
-        }else if(TYPE_CHAMPION == holder.getItemViewType()){
-            ItemChampionHolder itemChampionHolder = (ItemChampionHolder) holder;
-            itemChampionHolder.binding.image.setBackgroundColor(Color.BLACK);
-            itemChampionHolder.binding.name.setText(champion.getName());
-        }
+//        if(TYPE_CHAMPION_SUPER == holder.getItemViewType()){
+//            ItemChampionSuperHolder itemChampionSuperHolder = (ItemChampionSuperHolder) holder;
+//            itemChampionSuperHolder.binding.image.setBackgroundColor(Color.RED);
+//            itemChampionSuperHolder.binding.name.setText(champion.getName());
+//        }else if(TYPE_CHAMPION == holder.getItemViewType()){
+//            ItemChampionHolder itemChampionHolder = (ItemChampionHolder) holder;
+//            itemChampionHolder.binding.image.setBackgroundColor(Color.BLACK);
+//            itemChampionHolder.binding.name.setText(champion.getName());
+//        }
     }
 
     @Override
@@ -70,15 +70,15 @@ public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return 0;
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        Champion champion = championList.get(position);
-        if (champion.isSuper()) {
-            return TYPE_CHAMPION_SUPER;
-        } else {
-            return TYPE_CHAMPION;
-        }
-    }
+//    @Override
+//    public int getItemViewType(int position) {
+//        Champion champion = championList.get(position);
+//        if (champion.isSuper()) {
+//            return TYPE_CHAMPION_SUPER;
+//        } else {
+//            return TYPE_CHAMPION;
+//        }
+//    }
 
     public class ItemChampionSuperHolder extends RecyclerView.ViewHolder {
         private ItemChampionSuperBinding binding;

@@ -30,20 +30,6 @@ public class ChampionActivity extends BaseActivity {
         setContentView(binding.getRoot());
         setActivityTitle((R.string.hero));
         checkItemNavigation(R.id.champion);
-        ChampionAdapter adapter = new ChampionAdapter(getListChampion());
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 4);
-        binding.containerChampion.setLayoutManager(layoutManager);
-        binding.containerChampion.setAdapter(adapter);
-    }
-
-    private List<Champion> getListChampion() {
-        List<Champion> champions = new ArrayList<>();
-        champions.add(new Champion("Giang", true));
-        champions.add(new Champion("Uyen", true));
-        champions.add(new Champion("Cham", false));
-        champions.add(new Champion("Duyen", false));
-        champions.add(new Champion("Quynh", false));
-        return champions;
     }
 
     /*

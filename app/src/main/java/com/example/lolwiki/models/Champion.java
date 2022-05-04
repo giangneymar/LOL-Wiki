@@ -1,27 +1,13 @@
 package com.example.lolwiki.models;
 
+import androidx.room.PrimaryKey;
+
 public class Champion {
-    private String name;
-    private boolean isSuper;
+    @PrimaryKey
+    private int id;
+    private String name, image, legacyName, positionName, blueEssence, riotPoints, releaseate,
+            classes, adaptiveType, resource, health, healthRegen, armor, magiResist, moveSpeed,
+            attackDamage, attackRange, bonusAs, description, tier;
 
-    public Champion(String name, boolean isSuper) {
-        this.name = name;
-        this.isSuper = isSuper;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public boolean isSuper() {
-        return isSuper;
-    }
-
-    public void setSuper(boolean aSuper) {
-        isSuper = aSuper;
-    }
 }
