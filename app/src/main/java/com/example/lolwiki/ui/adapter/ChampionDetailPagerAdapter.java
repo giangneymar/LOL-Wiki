@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.lolwiki.ui.fragment.AbilitiesFragment;
-import com.example.lolwiki.ui.fragment.ItemFragment;
+import com.example.lolwiki.ui.fragment.BuildFragment;
 import com.example.lolwiki.ui.fragment.OverviewFragment;
 
 public class ChampionDetailPagerAdapter extends FragmentStateAdapter {
@@ -23,7 +23,7 @@ public class ChampionDetailPagerAdapter extends FragmentStateAdapter {
             case 1:
                 return new AbilitiesFragment();
             default:
-                return new ItemFragment();
+                return new BuildFragment();
         }
     }
 

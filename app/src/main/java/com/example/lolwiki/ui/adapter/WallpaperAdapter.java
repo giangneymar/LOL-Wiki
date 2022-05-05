@@ -28,7 +28,6 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Item
     /*
      * Area : function
      */
-
     public WallpaperAdapter(List<Wallpaper> wallpapers) {
         this.wallpapers = wallpapers;
     }

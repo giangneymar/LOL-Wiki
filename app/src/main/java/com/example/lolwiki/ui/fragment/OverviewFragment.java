@@ -9,17 +9,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.lolwiki.R;
+import com.example.lolwiki.bases.BaseFragment;
+import com.example.lolwiki.databinding.FragmentOverviewBinding;
 
-public class OverviewFragment extends Fragment {
+public class OverviewFragment extends BaseFragment {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public int getLayoutId() {
+        return R.layout.fragment_overview;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_overview, container, false);
+    public void onView(View view) {
+
     }
 }

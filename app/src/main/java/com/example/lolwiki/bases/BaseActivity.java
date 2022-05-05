@@ -44,7 +44,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void setContentView(View view) {
-        getLocale();
         init();
         frameLayout.addView(view);
         super.setContentView(drawerLayout);
@@ -75,54 +74,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         navigation.setNavigationItemSelectedListener(this);
     }
 
-    private void openDialogSelectLanguage() {
-        Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_select_language);
-
-        Window window = dialog.getWindow();
-        if (window == null) {
-            return;
-        }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        WindowManager.LayoutParams windowAttributes = window.getAttributes();
-        windowAttributes.gravity = Gravity.CENTER;
-        window.setAttributes(windowAttributes);
-
-        TextView vietnamese = dialog.findViewById(R.id.vietnamese);
-        TextView english = dialog.findViewById(R.id.english);
-        vietnamese.setOnClickListener(view -> {
-            setLocale("");
-            recreate();
-            dialog.dismiss();
-        });
-        english.setOnClickListener(view -> {
-            setLocale("en");
-            recreate();
-            dialog.dismiss();
-        });
-
-        dialog.show();
-    }
-
-    private void setLocale(String lang) {
-        Locale locale = new Locale(lang);
-        Locale.setDefault(locale);
-        Configuration configuration = new Configuration();
-        configuration.locale = locale;
-        getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
-        SharedPreferences.Editor editor = getSharedPreferences(LOCALE, MODE_PRIVATE).edit();
-        editor.putString(LANGUAGE, lang);
-        editor.apply();
-    }
-
-    private void getLocale() {
-        SharedPreferences preferences = getSharedPreferences(LOCALE, MODE_PRIVATE);
-        String language = preferences.getString(LANGUAGE, "");
-        setLocale(language);
-    }
-
     public void setActivityTitle(int title) {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(title);
@@ -142,17 +93,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
             case R.id.champion:
                 startActivity(new Intent(this, ChampionActivity.class));
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.rank:
-                startActivity(new Intent(this, RankActivity.class));
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.language:
-                openDialogSelectLanguage();
-                break;
-            case R.id.feedback:
-                startActivity(new Intent(this, FeedbackActivity.class));
                 overridePendingTransition(0, 0);
                 break;
             case R.id.wallpaper:

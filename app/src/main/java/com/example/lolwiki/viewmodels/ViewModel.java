@@ -3,10 +3,11 @@ package com.example.lolwiki.viewmodels;
 import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.lolwiki.data.models.Ability;
 import com.example.lolwiki.data.models.Champion;
+import com.example.lolwiki.data.models.Item;
 import com.example.lolwiki.data.models.Wallpaper;
 import com.example.lolwiki.data.Repositories;
 
@@ -26,7 +27,7 @@ public class ViewModel extends AndroidViewModel {
         repositories = new Repositories(application);
     }
 
-    public LiveData<List<Wallpaper>> getAllWallpaper() {
+    public MutableLiveData<List<Wallpaper>> getAllWallpaper() {
         MutableLiveData<List<Wallpaper>> data = new MutableLiveData<>();
         if (repositories.getAllWallpaper().size() > 0) {
             data.postValue(repositories.getAllWallpaper());
@@ -54,5 +55,25 @@ public class ViewModel extends AndroidViewModel {
             championsByPosition.postValue(null);
         }
         return championsByPosition;
+    }
+
+    public MutableLiveData<List<Ability>> getAbilitiesForChampion(int championId) {
+        MutableLiveData<List<Ability>> data = new MutableLiveData<>();
+        if (repositories.getAbilitiesForChampion(championId).size() > 0) {
+            data.postValue(repositories.getAbilitiesForChampion(championId));
+        } else {
+            data.postValue(null);
+        }
+        return data;
+    }
+
+    public MutableLiveData<List<Item>> getItemsForChampion(int championId) {
+        MutableLiveData<List<Item>> data = new MutableLiveData<>();
+        if (repositories.getItemForChampion(championId).size() > 0) {
+            data.postValue(repositories.getItemForChampion(championId));
+        } else {
+            data.postValue(null);
+        }
+        return data;
     }
 }

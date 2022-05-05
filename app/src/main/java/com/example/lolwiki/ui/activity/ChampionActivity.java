@@ -40,11 +40,6 @@ public class ChampionActivity extends BaseActivity {
     /*
      * Area : override
      */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu_champion, menu);
-        return true;
-    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

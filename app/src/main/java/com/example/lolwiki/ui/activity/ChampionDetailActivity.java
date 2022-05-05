@@ -24,6 +24,7 @@ public class ChampionDetailActivity extends BaseActivity {
         setContentView(binding.getRoot());
         setActivityTitle(R.string.champion);
         setViewPagerTabLayout();
+        checkItemNavigation(R.id.champion);
     }
 
     /*
