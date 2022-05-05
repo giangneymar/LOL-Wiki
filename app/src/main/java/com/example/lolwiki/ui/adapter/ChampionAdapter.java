@@ -1,5 +1,6 @@
 package com.example.lolwiki.ui.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -7,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.lolwiki.R;
 import com.example.lolwiki.databinding.ItemChampionBinding;
 import com.example.lolwiki.databinding.ItemChampionSuperBinding;
@@ -15,9 +17,10 @@ import com.example.lolwiki.data.models.Champion;
 import java.util.List;
 
 public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private static int TYPE_CHAMPION_SUPER = 1;
-    private static int TYPE_CHAMPION = 2;
+    private static final int TYPE_CHAMPION_SUPER = 1;
+    private static final int TYPE_CHAMPION = 2;
     private List<Champion> championList;
+    private Context context;
     private LayoutInflater layoutInflater;
 
     public ChampionAdapter(List<Champion> championList) {
@@ -27,6 +30,7 @@ public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        context = parent.getContext();
         if (TYPE_CHAMPION_SUPER == viewType) {
             if (layoutInflater == null) {
                 layoutInflater = LayoutInflater.from(parent.getContext());
@@ -46,18 +50,22 @@ public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Champion champion = championList.get(position);
-        if(champion==null){
+        if (champion == null) {
             return;
         }
-//        if(TYPE_CHAMPION_SUPER == holder.getItemViewType()){
-//            ItemChampionSuperHolder itemChampionSuperHolder = (ItemChampionSuperHolder) holder;
-//            itemChampionSuperHolder.binding.image.setBackgroundColor(Color.RED);
-//            itemChampionSuperHolder.binding.name.setText(champion.getName());
-//        }else if(TYPE_CHAMPION == holder.getItemViewType()){
-//            ItemChampionHolder itemChampionHolder = (ItemChampionHolder) holder;
-//            itemChampionHolder.binding.image.setBackgroundColor(Color.BLACK);
-//            itemChampionHolder.binding.name.setText(champion.getName());
-//        }
+        if (TYPE_CHAMPION_SUPER == holder.getItemViewType()) {
+            ItemChampionSuperHolder itemChampionSuperHolder = (ItemChampionSuperHolder) holder;
+            Glide.with(context)
+                    .load(champion.getImage())
+                    .into(itemChampionSuperHolder.binding.imageChampionS);
+            itemChampionSuperHolder.binding.nameChampionS.setText(champion.getName());
+        } else if (TYPE_CHAMPION == holder.getItemViewType()) {
+            ItemChampionHolder itemChampionHolder = (ItemChampionHolder) holder;
+            Glide.with(context)
+                    .load(champion.getImage())
+                    .into(itemChampionHolder.binding.imageChampion);
+            itemChampionHolder.binding.nameChampion.setText(champion.getName());
+        }
     }
 
     @Override
@@ -68,18 +76,18 @@ public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return 0;
     }
 
-//    @Override
-//    public int getItemViewType(int position) {
-//        Champion champion = championList.get(position);
-//        if (champion.isSuper()) {
-//            return TYPE_CHAMPION_SUPER;
-//        } else {
-//            return TYPE_CHAMPION;
-//        }
-//    }
+    @Override
+    public int getItemViewType(int position) {
+        Champion champion = championList.get(position);
+        if (champion.getTier().equals("s")) {
+            return TYPE_CHAMPION_SUPER;
+        } else {
+            return TYPE_CHAMPION;
+        }
+    }
 
-    public class ItemChampionSuperHolder extends RecyclerView.ViewHolder {
-        private ItemChampionSuperBinding binding;
+    public static class ItemChampionSuperHolder extends RecyclerView.ViewHolder {
+        private final ItemChampionSuperBinding binding;
 
         public ItemChampionSuperHolder(ItemChampionSuperBinding binding) {
             super(binding.getRoot());
@@ -87,8 +95,8 @@ public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    public class ItemChampionHolder extends RecyclerView.ViewHolder {
-        private ItemChampionBinding binding;
+    public static class ItemChampionHolder extends RecyclerView.ViewHolder {
+        private final ItemChampionBinding binding;
 
         public ItemChampionHolder(ItemChampionBinding binding) {
             super(binding.getRoot());

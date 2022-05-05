@@ -6,29 +6,12 @@ import androidx.room.PrimaryKey;
 import java.io.Serializable;
 
 @Entity(tableName = "champion")
-public class Champion implements Serializable {
+public class Champion implements Serializable, Comparable<Champion> {
     @PrimaryKey
     private int id;
-    private String name;
-    private String image;
-    private String legacyName;
-    private String positionName;
-    private String blueEssence;
-    private String riotPoints;
-    private String releaseDate;
-    private String classes;
-    private String adaptiveType;
-    private String resource;
-    private String health;
-    private String healthRegen;
-    private String armor;
-    private String magicResist;
-    private String moveSpeed;
-    private String attackDamage;
-    private String attackRange;
-    private String bonusAS;
-    private String description;
-    private String tier;
+    private String name, image, legacyName, positionName, blueEssence, riotPoints, releaseDate,
+            classes, adaptiveType, resource, health, healthRegen, armor, magicResist, moveSpeed,
+            attackDamage, attackRange, bonusAS, description, tier;
 
     public Champion() {
     }
@@ -199,5 +182,10 @@ public class Champion implements Serializable {
 
     public void setTier(String tier) {
         this.tier = tier;
+    }
+
+    @Override
+    public int compareTo(Champion champion) {
+        return this.getTier().compareTo(champion.getTier());
     }
 }

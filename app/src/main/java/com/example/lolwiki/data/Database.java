@@ -19,7 +19,7 @@ public abstract class Database extends RoomDatabase {
     /*
      * Area : function
      */
-    public abstract DAO wallpaperDAO();
+    public abstract DAO dao();
 
     public static synchronized Database getInstance(Context context) {
         if (database == null) {

@@ -14,15 +14,9 @@ public interface DAO {
     @Query("SELECT * FROM wallpaper")
     List<Wallpaper> getAllWallpaper();
 
-    @Query("SELECT * FROM champion WHERE tier = 's' ")
-    List<Champion> getChampionsTierS();
-
-    @Query("SELECT * FROM champion WHERE tier == 'NULL' ")
-    List<Champion> getChampionsNoneTier();
+    @Query("SELECT * FROM champion")
+    List<Champion> getAllChampion();
 
     @Query("SELECT * FROM champion WHERE positionName LIKE :position")
     List<Champion> filterChampionByPosition(String position);
-
-    @Query("SELECT * FROM champion WHERE legacyName LIKE :legacy")
-    List<Champion> filterChampionByLegacy(String legacy);
 }
