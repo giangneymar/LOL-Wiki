@@ -1,10 +1,12 @@
 package com.example.lolwiki.ui.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
@@ -35,6 +37,12 @@ public class ChampionActivity extends BaseActivity {
         setContentView(binding.getRoot());
         init();
         clickListener();
+        binding.search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ChampionActivity.this,ChampionDetailActivity.class));
+            }
+        });
     }
 
     /*

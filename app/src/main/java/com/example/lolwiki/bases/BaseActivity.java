@@ -26,8 +26,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.lolwiki.R;
 import com.example.lolwiki.ui.activity.ChampionActivity;
-import com.example.lolwiki.ui.activity.FeedbackActivity;
-import com.example.lolwiki.ui.activity.RankActivity;
 import com.example.lolwiki.ui.activity.WallpaperActivity;
 import com.google.android.material.navigation.NavigationView;
 

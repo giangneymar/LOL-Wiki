@@ -20,13 +20,7 @@
             android:name=".ui.activity.WallpaperDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activity.FeedbackActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.activity.WallpaperActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activity.RankActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.ChampionActivity"
