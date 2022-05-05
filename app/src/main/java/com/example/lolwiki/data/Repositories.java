@@ -19,8 +19,8 @@ public class Repositories {
      * Area : function
      */
     public Repositories(Application application) {
-        Database wallpaperDatabase = Database.getInstance(application);
-        dao = wallpaperDatabase.dao();
+        Database database = Database.getInstance(application);
+        dao = database.dao();
     }
 
     public List<Wallpaper> getAllWallpaper() {

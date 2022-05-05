@@ -72,7 +72,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         navigation.setNavigationItemSelectedListener(this);
     }
 
-    public void setActivityTitle(int title) {
+    public void setActivityTitle(String title) {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(title);
         }

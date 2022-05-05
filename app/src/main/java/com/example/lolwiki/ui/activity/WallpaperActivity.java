@@ -33,7 +33,7 @@ public class WallpaperActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityWallpaperBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setActivityTitle(R.string.wallpaper);
+        setActivityTitle("Wallpaper");
         checkItemNavigation(R.id.wallpaper);
         init();
     }

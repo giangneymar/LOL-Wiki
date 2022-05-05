@@ -64,7 +64,7 @@ public class ChampionActivity extends BaseActivity {
     }
 
     private void init() {
-        setActivityTitle((R.string.champion));
+        setActivityTitle("Champion");
         checkItemNavigation(R.id.champion);
         viewModel = new ViewModelProvider(this).get(ViewModel.class);
         viewModel.getAllChampion().observe(this, champions -> {

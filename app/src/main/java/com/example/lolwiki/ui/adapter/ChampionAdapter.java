@@ -1,7 +1,10 @@
 package com.example.lolwiki.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -13,6 +16,8 @@ import com.example.lolwiki.R;
 import com.example.lolwiki.databinding.ItemChampionBinding;
 import com.example.lolwiki.databinding.ItemChampionSuperBinding;
 import com.example.lolwiki.data.models.Champion;
+import com.example.lolwiki.ui.activity.ChampionDetailActivity;
+import com.example.lolwiki.ui.fragment.OverviewFragment;
 
 import java.util.List;
 
@@ -59,13 +64,27 @@ public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     .load(champion.getImage())
                     .into(itemChampionSuperHolder.binding.imageChampionS);
             itemChampionSuperHolder.binding.nameChampionS.setText(champion.getName());
+            itemChampionSuperHolder.binding.getRoot().setOnClickListener(view -> {
+                switchScreen(view,position);
+            });
         } else if (TYPE_CHAMPION == holder.getItemViewType()) {
             ItemChampionHolder itemChampionHolder = (ItemChampionHolder) holder;
             Glide.with(context)
                     .load(champion.getImage())
                     .into(itemChampionHolder.binding.imageChampion);
             itemChampionHolder.binding.nameChampion.setText(champion.getName());
+            itemChampionHolder.binding.getRoot().setOnClickListener(view -> {
+                switchScreen(view,position);
+            });
         }
+    }
+
+    private void switchScreen(View view, int position){
+        Intent intent = new Intent(view.getContext(), ChampionDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Champion", championList.get(position));
+        intent.putExtras(bundle);
+        view.getContext().startActivity(intent);
     }
 
     @Override
