@@ -1,5 +1,8 @@
 package com.example.lolwiki.ui.activity;
 
+import static com.example.lolwiki.utils.KeyConstant.DATABASE_NAME;
+import static com.example.lolwiki.utils.KeyConstant.DATABASE_PATH;
+
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,6 +19,10 @@ import com.example.lolwiki.databinding.ActivityChampionBinding;
 import com.example.lolwiki.ui.adapter.ChampionAdapter;
 import com.example.lolwiki.viewmodels.ViewModel;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Collections;
 import java.util.List;
 
@@ -44,12 +51,46 @@ public class ChampionActivity extends BaseActivity {
      * Area : function
      */
     private void init() {
+        processAsset();
         setActivityTitle(getString(R.string.champion));
         viewModel = new ViewModelProvider(this).get(ViewModel.class);
         viewModel.getAllChampion().observe(this, champions -> {
             Collections.sort(champions, Collections.reverseOrder());
             updateRecyclerViewChampion(champions);
         });
+    }
+
+    private void processAsset() {
+        File file = getDatabasePath(DATABASE_NAME);
+        if (!file.exists()) {
+            copy();
+        } else {
+            file.delete();
+            copy();
+        }
+    }
+
+    private void copy() {
+        try {
+            InputStream inputStream = getAssets().open(DATABASE_NAME);
+            String output = getApplicationInfo().dataDir + DATABASE_PATH + DATABASE_NAME;
+            File file = new File(getApplicationInfo().dataDir + DATABASE_PATH);
+            if (!file.exists()) {
+                file.mkdir();
+            }
+
+            OutputStream outputStream = new FileOutputStream(output);
+            byte[] bytes = new byte[1024];
+            int len;
+            while ((len = inputStream.read(bytes)) > 0) {
+                outputStream.write(bytes, 0, len);
+            }
+            outputStream.flush();
+            inputStream.close();
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateRecyclerViewChampion(List<Champion> champions) {
