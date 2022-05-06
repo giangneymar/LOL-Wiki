@@ -29,7 +29,7 @@ public class OverviewFragment extends BaseFragment<FragmentOverviewBinding> {
             binding.riotPoints.setText(champion.getRiotPoints());
             binding.releaseDate.setText(champion.getReleaseDate());
             if (champion.getTier().equals("s")) {
-                binding.tier.setText(champion.getTier());
+                binding.tier.setText(champion.getTier().toUpperCase());
             } else {
                 binding.tier.setText(R.string.normal);
             }
