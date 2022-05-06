@@ -35,6 +35,10 @@ public class Repositories {
         return dao.filterChampionByPosition(position);
     }
 
+    public List<Champion> searchChampionByName(String name){
+        return dao.searchChampionByName(name);
+    }
+
     public List<Ability> getAbilitiesForChampion(int championId){
         return dao.getAbilitiesForChampion(championId);
     }

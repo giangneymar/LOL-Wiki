@@ -57,6 +57,16 @@ public class ViewModel extends AndroidViewModel {
         return championsByPosition;
     }
 
+    public MutableLiveData<List<Champion>> searchChampionByName(String name) {
+        MutableLiveData<List<Champion>> championsByname = new MutableLiveData<>();
+        if (repositories.searchChampionByName(name).size() > 0) {
+            championsByname.postValue(repositories.searchChampionByName(name));
+        } else {
+            championsByname.postValue(null);
+        }
+        return championsByname;
+    }
+
     public MutableLiveData<List<Ability>> getAbilitiesForChampion(int championId) {
         MutableLiveData<List<Ability>> data = new MutableLiveData<>();
         if (repositories.getAbilitiesForChampion(championId).size() > 0) {

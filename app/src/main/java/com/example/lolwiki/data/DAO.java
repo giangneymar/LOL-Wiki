@@ -27,4 +27,7 @@ public interface DAO {
 
     @Query("SELECT item.* FROM item,item_for_champion,champion WHERE item.id=item_for_champion.itemId and champion.id = item_for_champion.championId and champion.id=:id")
     List<Item> getItemForChampion(int id);
+
+    @Query("SELECT * FROM champion WHERE name LIKE :name")
+    List<Champion> searchChampionByName(String name);
 }

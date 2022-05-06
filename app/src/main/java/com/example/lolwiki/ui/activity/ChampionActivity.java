@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +32,9 @@ public class ChampionActivity extends BaseActivity {
     private ActivityChampionBinding binding;
     private ViewModel viewModel;
 
+    /*
+     * Area : override
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,17 +42,7 @@ public class ChampionActivity extends BaseActivity {
         setContentView(binding.getRoot());
         init();
         clickListener();
-        binding.search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ChampionActivity.this,ChampionDetailActivity.class));
-            }
-        });
     }
-
-    /*
-     * Area : override
-     */
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -73,9 +68,9 @@ public class ChampionActivity extends BaseActivity {
         });
     }
 
+    @SuppressLint("ResourceAsColor")
     private void clickListener() {
         binding.positionJungle.setOnClickListener(view -> viewModel.filterChampionsByPosition(getString(R.string.position_jungle)).observe(this, new Observer<List<Champion>>() {
-            @SuppressLint("ResourceAsColor")
             @Override
             public void onChanged(List<Champion> champions) {
                 binding.positionJungle.setBorderColor(Color.YELLOW);
@@ -89,7 +84,6 @@ public class ChampionActivity extends BaseActivity {
         }));
 
         binding.positionTop.setOnClickListener(view -> viewModel.filterChampionsByPosition(getString(R.string.position_top)).observe(this, new Observer<List<Champion>>() {
-            @SuppressLint("ResourceAsColor")
             @Override
             public void onChanged(List<Champion> champions) {
                 binding.positionTop.setBorderColor(Color.YELLOW);
@@ -103,7 +97,6 @@ public class ChampionActivity extends BaseActivity {
         }));
 
         binding.positionBot.setOnClickListener(view -> viewModel.filterChampionsByPosition(getString(R.string.position_bottom)).observe(this, new Observer<List<Champion>>() {
-            @SuppressLint("ResourceAsColor")
             @Override
             public void onChanged(List<Champion> champions) {
                 binding.positionBot.setBorderColor(Color.YELLOW);
@@ -117,7 +110,6 @@ public class ChampionActivity extends BaseActivity {
         }));
 
         binding.positionMid.setOnClickListener(view -> viewModel.filterChampionsByPosition(getString(R.string.position_middle)).observe(this, new Observer<List<Champion>>() {
-            @SuppressLint("ResourceAsColor")
             @Override
             public void onChanged(List<Champion> champions) {
                 binding.positionMid.setBorderColor(Color.YELLOW);
@@ -131,7 +123,6 @@ public class ChampionActivity extends BaseActivity {
         }));
 
         binding.positionSp.setOnClickListener(view -> viewModel.filterChampionsByPosition(getString(R.string.position_support)).observe(this, new Observer<List<Champion>>() {
-            @SuppressLint("ResourceAsColor")
             @Override
             public void onChanged(List<Champion> champions) {
                 binding.positionSp.setBorderColor(Color.YELLOW);
@@ -143,6 +134,29 @@ public class ChampionActivity extends BaseActivity {
                 updateRecyclerViewChampion(champions);
             }
         }));
-    }
 
+        binding.search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (!editable.toString().trim().isEmpty()) {
+                    viewModel.searchChampionByName("%" + editable + "%").observe(ChampionActivity.this, new Observer<List<Champion>>() {
+                        @Override
+                        public void onChanged(List<Champion> champions) {
+                            updateRecyclerViewChampion(champions);
+                        }
+                    });
+                }
+            }
+        });
+    }
 }
