@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.lolwiki.R;
 import com.example.lolwiki.data.models.Ability;
 import com.example.lolwiki.databinding.ItemAbilitiesBinding;

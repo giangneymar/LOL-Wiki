@@ -1,6 +1,7 @@
 package com.example.lolwiki.bases;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -63,8 +64,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         navigation = drawerLayout.findViewById(R.id.navigation);
     }
 
-    private void setNavigation() {
-        setSupportActionBar(toolbar);
+    public void setNavigation() {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
@@ -74,6 +74,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         );
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        toggle.getDrawerArrowDrawable().setColor(Color.WHITE);
         navigation.setNavigationItemSelectedListener(this);
     }
 
