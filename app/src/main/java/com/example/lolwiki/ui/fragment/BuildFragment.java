@@ -1,32 +1,22 @@
 package com.example.lolwiki.ui.fragment;
 
-import static com.example.lolwiki.utils.KeyConstant.CHAMPION_OVERVIEW;
-import static com.example.lolwiki.utils.KeyConstant.REQUEST_KEY_OVERVIEW;
+import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
 import com.bumptech.glide.Glide;
 import com.example.lolwiki.R;
 import com.example.lolwiki.bases.BaseFragment;
-import com.example.lolwiki.data.models.Champion;
 import com.example.lolwiki.data.models.Item;
 import com.example.lolwiki.databinding.FragmentBuildBinding;
-import com.example.lolwiki.ui.adapter.ChampionAdapter;
 import com.example.lolwiki.ui.adapter.ItemAdapter;
 import com.example.lolwiki.viewmodels.ViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BuildFragment extends BaseFragment<FragmentBuildBinding> {

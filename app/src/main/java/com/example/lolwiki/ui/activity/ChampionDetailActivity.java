@@ -1,16 +1,16 @@
 package com.example.lolwiki.ui.activity;
 
 import static com.example.lolwiki.utils.KeyConstant.CHAMPION;
-import static com.example.lolwiki.utils.KeyConstant.CHAMPION_OVERVIEW;
-import static com.example.lolwiki.utils.KeyConstant.REQUEST_KEY_OVERVIEW;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+import static com.example.lolwiki.utils.KeyConstant.CHAMPION_FRAGMENT;
+import static com.example.lolwiki.utils.KeyConstant.REQUEST_KEY_FRAGMENT;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.lolwiki.R;
 import com.example.lolwiki.bases.BaseActivity;

@@ -1,12 +1,10 @@
 package com.example.lolwiki.ui.fragment;
 
-import static com.example.lolwiki.utils.KeyConstant.CHAMPION_OVERVIEW;
-import static com.example.lolwiki.utils.KeyConstant.REQUEST_KEY_OVERVIEW;
+import static com.example.lolwiki.utils.KeyConstant.CHAMPION_FRAGMENT;
+import static com.example.lolwiki.utils.KeyConstant.REQUEST_KEY_FRAGMENT;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

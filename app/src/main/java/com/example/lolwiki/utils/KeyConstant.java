@@ -2,8 +2,7 @@ package com.example.lolwiki.utils;
 
 public interface KeyConstant {
     String WALLPAPER = "wallpaper";
-    String DATABASE_NAME = "lolwiki.sqlite";
-    String REQUEST_KEY_OVERVIEW = "request_key_overview";
+    String REQUEST_KEY_FRAGMENT = "request_key_fragment";
     String CHAMPION = "champion";
-    String CHAMPION_OVERVIEW = "champion_overview";
+    String CHAMPION_FRAGMENT = "champion_fragment";
 }

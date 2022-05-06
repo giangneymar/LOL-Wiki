@@ -1,25 +1,17 @@
 package com.example.lolwiki.ui.fragment;
 
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
 import com.example.lolwiki.R;
 import com.example.lolwiki.bases.BaseFragment;
-import com.example.lolwiki.data.models.Ability;
-import com.example.lolwiki.data.models.Champion;
 import com.example.lolwiki.databinding.FragmentAbilitiesBinding;
 import com.example.lolwiki.ui.adapter.AbilitiesAdapter;
 import com.example.lolwiki.viewmodels.ViewModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AbilitiesFragment extends BaseFragment<FragmentAbilitiesBinding> {
     /*
@@ -44,9 +36,5 @@ public class AbilitiesFragment extends BaseFragment<FragmentAbilitiesBinding> {
             AbilitiesAdapter abilitiesAdapter = new AbilitiesAdapter(abilities);
             binding.containerAbilities.setAdapter(abilitiesAdapter);
         });
-    }
-
-    public void getChampionID(int championID) {
-        Log.d("cccccccccc", championID + "");
     }
 }
