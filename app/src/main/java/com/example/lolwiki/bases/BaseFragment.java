@@ -2,6 +2,8 @@ package com.example.lolwiki.bases;
 
 import android.os.Bundle;
 
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -10,16 +12,16 @@ import android.view.ViewGroup;
 
 import com.example.lolwiki.R;
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment<VB extends ViewDataBinding> extends Fragment {
+
+    protected VB binding;
 
     abstract public int getLayoutId();
-    abstract public void onView(View view);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(getLayoutId(), container, false);
-        onView(view);
-        return view;
+        binding = DataBindingUtil.inflate(inflater,getLayoutId(),container,false);
+        return binding.getRoot();
     }
 }

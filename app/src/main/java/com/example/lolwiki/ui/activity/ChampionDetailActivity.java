@@ -1,6 +1,11 @@
 package com.example.lolwiki.ui.activity;
 
+import static com.example.lolwiki.utils.KeyConstant.CHAMPION;
+import static com.example.lolwiki.utils.KeyConstant.CHAMPION_OVERVIEW;
+import static com.example.lolwiki.utils.KeyConstant.REQUEST_KEY_OVERVIEW;
+
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,9 +37,13 @@ public class ChampionDetailActivity extends BaseActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
-            Champion champion = (Champion) bundle.getSerializable("Champion");
+            Champion champion = (Champion) bundle.getSerializable(CHAMPION);
             setActivityTitle(champion.getName());
-        };
+            Bundle result = new Bundle();
+            result.putSerializable(CHAMPION_OVERVIEW, champion);
+            getSupportFragmentManager().setFragmentResult(REQUEST_KEY_OVERVIEW,result);
+        }
+        ;
     }
 
     /*

@@ -1,5 +1,7 @@
 package com.example.lolwiki.ui.adapter;
 
+import static com.example.lolwiki.utils.KeyConstant.CHAMPION;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -82,7 +84,7 @@ public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private void switchScreen(View view, int position){
         Intent intent = new Intent(view.getContext(), ChampionDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("Champion", championList.get(position));
+        bundle.putSerializable(CHAMPION, championList.get(position));
         intent.putExtras(bundle);
         view.getContext().startActivity(intent);
     }

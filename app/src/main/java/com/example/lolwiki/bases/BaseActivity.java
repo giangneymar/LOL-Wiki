@@ -1,21 +1,9 @@
 package com.example.lolwiki.bases;
 
-import static com.example.lolwiki.utils.KeyConstant.LANGUAGE;
-import static com.example.lolwiki.utils.KeyConstant.LOCALE;
-
-import android.app.Dialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -28,8 +16,6 @@ import com.example.lolwiki.R;
 import com.example.lolwiki.ui.activity.ChampionActivity;
 import com.example.lolwiki.ui.activity.WallpaperActivity;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.Locale;
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     /*

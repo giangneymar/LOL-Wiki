@@ -256,6 +256,7 @@
                     app:layout_constraintTop_toBottomOf="@id/layout_container_properties">
 
                     <TextView
+                        android:id="@+id/legacy_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -272,6 +273,7 @@
                         android:background="@drawable/ic_star" />
 
                     <TextView
+                        android:id="@+id/position_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -288,6 +290,7 @@
 
 
                     <TextView
+                        android:id="@+id/classes"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
@@ -305,11 +308,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginTop="20dp"
-                    android:fontFamily="@font/uvn_cake"
                     android:inputType="textMultiLine"
                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:textStyle="italic"
+                    android:textStyle="italic|bold"
                     app:layout_constraintTop_toBottomOf="@+id/layout_bonus_container_properties" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -587,7 +589,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </ScrollView>
     </FrameLayout>
 </layout>
