@@ -4,6 +4,7 @@ import static com.example.lolwiki.utils.KeyConstant.CHAMPION_OVERVIEW;
 import static com.example.lolwiki.utils.KeyConstant.REQUEST_KEY_OVERVIEW;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,6 +30,7 @@ public class OverviewFragment extends BaseFragment<FragmentOverviewBinding> {
         super.onViewCreated(view, savedInstanceState);
         getParentFragmentManager().setFragmentResultListener(REQUEST_KEY_OVERVIEW, this, (requestKey, result) -> {
             Champion champion = (Champion) result.getSerializable(CHAMPION_OVERVIEW);
+            Log.d("bbbba", champion + "");
             Glide.with(view).load(champion.getImage()).into(binding.image);
             binding.blueEssence.setText(champion.getBlueEssence());
            binding.riotPoints.setText(champion.getRiotPoints());
@@ -49,5 +51,9 @@ public class OverviewFragment extends BaseFragment<FragmentOverviewBinding> {
             binding.bonusAs.setText(champion.getBonusAS());
             binding.description.setText(champion.getDescription());
         });
+    }
+
+    public void getChampion(Champion champion) {
+        Log.d("Ccccccc", champion.getName());
     }
 }

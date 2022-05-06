@@ -13,6 +13,7 @@ import android.view.View;
 import com.example.lolwiki.R;
 import com.example.lolwiki.bases.BaseFragment;
 import com.example.lolwiki.data.models.Ability;
+import com.example.lolwiki.data.models.Champion;
 import com.example.lolwiki.databinding.FragmentAbilitiesBinding;
 import com.example.lolwiki.ui.adapter.AbilitiesAdapter;
 import com.example.lolwiki.viewmodels.ViewModel;
@@ -43,8 +44,12 @@ public class AbilitiesFragment extends BaseFragment<FragmentAbilitiesBinding> {
         viewModel.getAbilitiesForChampion(0).observe(getViewLifecycleOwner(), new Observer<List<Ability>>() {
             @Override
             public void onChanged(List<Ability> abilities) {
-                Log.d("aaa", abilities.size() + "");
+                Log.d("bbbbbw", abilities.size() + "");
             }
         });
+    }
+
+    public void getChampionID(int championID) {
+        Log.d("cccccccccc", championID + "");
     }
 }
