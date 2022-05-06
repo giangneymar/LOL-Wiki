@@ -29,23 +29,27 @@ public class ChampionDetailActivity extends BaseActivity {
     private ChampionDetailPagerAdapter adapter;
     private Champion champion;
 
+    /*
+     * Area : override
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityChampionDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        champion = null;
-        if (bundle != null) {
-            champion = (Champion) bundle.getSerializable(CHAMPION);
-            setActivityTitle(champion.getName());
-            Bundle result = new Bundle();
-            result.putSerializable(CHAMPION_OVERVIEW, champion);
-            getSupportFragmentManager().setFragmentResult(REQUEST_KEY_OVERVIEW, result);
-        }
         setViewPagerTabLayout();
         checkItemNavigation(R.id.champion);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back_white);
+        getDataChampionFromChampionActivity();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /*
@@ -56,9 +60,9 @@ public class ChampionDetailActivity extends BaseActivity {
                 getSupportFragmentManager(),
                 FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
         );
-        adapter.addFragment(new OverviewFragment(), "OverView");
-        adapter.addFragment(new AbilitiesFragment(), "Abilities");
-        adapter.addFragment(new BuildFragment(), "Build");
+        adapter.addFragment(new OverviewFragment(), getString(R.string.overview));
+        adapter.addFragment(new AbilitiesFragment(), getString(R.string.abilities));
+        adapter.addFragment(new BuildFragment(), getString(R.string.build));
         binding.viewPager.setAdapter(adapter);
         binding.viewPager.setOffscreenPageLimit(2);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
@@ -71,16 +75,16 @@ public class ChampionDetailActivity extends BaseActivity {
             @Override
             public void onPageSelected(int position) {
                 if (position == 1) {
-                    Fragment fragmentAbilities = adapter.getFragmentByPosition(position);
-                    if (fragmentAbilities instanceof AbilitiesFragment) {
-                        AbilitiesFragment abilitiesFragment = (AbilitiesFragment) fragmentAbilities;
+                    Fragment fragment = adapter.getFragmentByPosition(position);
+                    if (fragment instanceof AbilitiesFragment) {
+                        AbilitiesFragment abilitiesFragment = (AbilitiesFragment) fragment;
                         abilitiesFragment.getChampionID(champion.getId());
                     }
                 }
                 if (position == 2) {
-                    Fragment fragmentBuild = adapter.getFragmentByPosition(position);
-                    if (fragmentBuild instanceof BuildFragment) {
-                        BuildFragment buildFragment = (BuildFragment) fragmentBuild;
+                    Fragment fragment = adapter.getFragmentByPosition(position);
+                    if (fragment instanceof BuildFragment) {
+                        BuildFragment buildFragment = (BuildFragment) fragment;
                         buildFragment.getChampionID(champion.getId());
                     }
                 }
@@ -93,4 +97,16 @@ public class ChampionDetailActivity extends BaseActivity {
         });
     }
 
+    private void getDataChampionFromChampionActivity() {
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        champion = null;
+        if (bundle != null) {
+            champion = (Champion) bundle.getSerializable(CHAMPION);
+            setActivityTitle(champion.getName());
+            Bundle result = new Bundle();
+            result.putSerializable(CHAMPION_FRAGMENT, champion);
+            getSupportFragmentManager().setFragmentResult(REQUEST_KEY_FRAGMENT, result);
+        }
+    }
 }

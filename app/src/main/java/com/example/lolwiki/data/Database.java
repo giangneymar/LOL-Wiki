@@ -17,19 +17,23 @@ public abstract class Database extends RoomDatabase {
     /*
      * Area : variable
      */
+    public static String DATABASE_NAME = "lolwiki.sqlite";
+    /*
+     * Area : variable
+     */
     private static Database database;
 
     /*
      * Area : function
      */
-    public abstract DAO dao();
-
     public static synchronized Database getInstance(Context context) {
         if (database == null) {
-            database = Room.databaseBuilder(context, Database.class, KeyConstant.DATABASE_NAME)
+            database = Room.databaseBuilder(context, Database.class, DATABASE_NAME)
                     .allowMainThreadQueries()
                     .build();
         }
         return database;
     }
+
+    public abstract DAO dao();
 }

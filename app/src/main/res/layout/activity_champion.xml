@@ -17,88 +17,88 @@
             android:background="@drawable/border_search"
             android:fontFamily="@font/uvn_cake"
             android:hint="@string/search"
+            android:padding="12dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            app:layout_constraintTop_toTopOf="parent"
-            android:padding="12dp" />
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/search_selected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:src="@drawable/ic_baseline_search_24"
-            app:layout_constraintTop_toTopOf="@id/search"
             app:layout_constraintBottom_toBottomOf="@id/search"
-            app:layout_constraintRight_toRightOf="@id/search"/>
+            app:layout_constraintRight_toRightOf="@id/search"
+            app:layout_constraintTop_toTopOf="@id/search" />
 
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/position_jungle"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="20dp"
-                app:civ_border_width="1dp"
-                app:civ_border_color="#504F4C"
-                app:layout_constraintTop_toBottomOf="@id/search"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:src="@drawable/ic_jungle" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/position_jungle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_jungle"
+            app:civ_border_color="#504F4C"
+            app:civ_border_width="1dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/position_bot"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"
-                app:civ_border_width="1dp"
-                app:civ_border_color="#504F4C"
-                app:layout_constraintLeft_toRightOf="@id/position_jungle"
-                app:layout_constraintTop_toBottomOf="@id/search"
-                android:src="@drawable/ic_top" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/position_bot"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_top"
+            app:civ_border_color="#504F4C"
+            app:civ_border_width="1dp"
+            app:layout_constraintLeft_toRightOf="@id/position_jungle"
+            app:layout_constraintTop_toBottomOf="@id/search" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/position_top"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"
-                app:civ_border_width="1dp"
-                app:civ_border_color="#504F4C"
-                app:layout_constraintLeft_toRightOf="@id/position_bot"
-                app:layout_constraintTop_toBottomOf="@id/search"
-                android:src="@drawable/ic_bot" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/position_top"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_bot"
+            app:civ_border_color="#504F4C"
+            app:civ_border_width="1dp"
+            app:layout_constraintLeft_toRightOf="@id/position_bot"
+            app:layout_constraintTop_toBottomOf="@id/search" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/position_mid"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"
-                app:civ_border_width="1dp"
-                app:civ_border_color="#504F4C"
-                app:layout_constraintLeft_toRightOf="@id/position_top"
-                app:layout_constraintTop_toBottomOf="@id/search"
-                android:src="@drawable/ic_mid" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/position_mid"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_mid"
+            app:civ_border_color="#504F4C"
+            app:civ_border_width="1dp"
+            app:layout_constraintLeft_toRightOf="@id/position_top"
+            app:layout_constraintTop_toBottomOf="@id/search" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/position_sp"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"
-                app:civ_border_width="1dp"
-                app:civ_border_color="#504F4C"
-                app:layout_constraintLeft_toRightOf="@id/position_mid"
-                app:layout_constraintTop_toBottomOf="@id/search"
-                android:src="@drawable/ic_sp" />
-
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/position_sp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_sp"
+            app:civ_border_color="#504F4C"
+            app:civ_border_width="1dp"
+            app:layout_constraintLeft_toRightOf="@id/position_mid"
+            app:layout_constraintTop_toBottomOf="@id/search" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/container_champion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/position_jungle"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/position_jungle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

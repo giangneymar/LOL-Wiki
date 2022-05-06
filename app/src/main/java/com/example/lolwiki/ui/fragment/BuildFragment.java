@@ -30,23 +30,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BuildFragment extends BaseFragment<FragmentBuildBinding> {
-
-    private ItemAdapter itemAdapter;
-    private List<Item> items;
-    private ViewModel viewModel;
-
-    @Override
-    public int getLayoutId() {
-        return R.layout.fragment_build;
-    }
-
+    /*
+     * Area : override
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
 
+    @Override
+    public int getLayoutId() {
+        return R.layout.fragment_build;
+    }
+    /*
+     * Area : function
+     */
+    private void updateRecyclerViewItem(List<Item> items) {
+        binding.containerItem.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+        ItemAdapter itemAdapter = new ItemAdapter(items);
+        binding.containerItem.setAdapter(itemAdapter);
+    }
+
     public void getChampionID(int championID) {
-        viewModel = new ViewModelProvider(this).get(ViewModel.class);
+        ViewModel viewModel = new ViewModelProvider(this).get(ViewModel.class);
         viewModel.getItemsForChampion(championID).observe(this, items -> {
             updateRecyclerViewItem(items);
             Glide.with(this).load(items.get(0).getImage()).into(binding.item1);
@@ -56,11 +62,5 @@ public class BuildFragment extends BaseFragment<FragmentBuildBinding> {
             Glide.with(this).load(items.get(4).getImage()).into(binding.item5);
             Glide.with(this).load(items.get(5).getImage()).into(binding.item6);
         });
-    }
-
-    private void updateRecyclerViewItem(List<Item> items) {
-        binding.containerItem.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-        ItemAdapter itemAdapter = new ItemAdapter(items);
-        binding.containerItem.setAdapter(itemAdapter);
     }
 }

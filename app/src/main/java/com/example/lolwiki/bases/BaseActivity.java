@@ -26,12 +26,31 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     private FrameLayout frameLayout;
     private Toolbar toolbar;
 
+    /*
+     * Area : override
+     */
     @Override
     public void setContentView(View view) {
         init();
         frameLayout.addView(view);
         super.setContentView(drawerLayout);
-        setNavigation();
+        setSupportActionBar(toolbar);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        drawerLayout.closeDrawer(GravityCompat.START);
+        switch (item.getItemId()) {
+            case R.id.champion:
+                startActivity(new Intent(this, ChampionActivity.class));
+                overridePendingTransition(0,0);
+                break;
+            case R.id.wallpaper:
+                startActivity(new Intent(this, WallpaperActivity.class));
+                overridePendingTransition(0, 0);
+                break;
+        }
+        return true;
     }
 
     /*
@@ -66,24 +85,5 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     public void checkItemNavigation(int id) {
         navigation.getMenu().findItem(id).setChecked(true);
-    }
-
-    /*
-     * Area : override
-     */
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        switch (item.getItemId()) {
-            case R.id.champion:
-                startActivity(new Intent(this, ChampionActivity.class));
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.wallpaper:
-                startActivity(new Intent(this, WallpaperActivity.class));
-                overridePendingTransition(0, 0);
-                break;
-        }
-        return true;
     }
 }

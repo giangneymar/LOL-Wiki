@@ -11,4 +11,7 @@
     <color name="bland">#D3BBBB</color>
     <color name="yellow">#FFE500</color>
     <color name="as_black">#504F4C</color>
+    <color name="dark_yellow">#FF9800</color>
+    <color name="dark_brown">#373535</color>
+    <color name="pale_brown">#525050</color>
 </resources>

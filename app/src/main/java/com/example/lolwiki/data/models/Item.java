@@ -7,12 +7,18 @@ import java.io.Serializable;
 
 @Entity(tableName = "item")
 public class Item implements Serializable {
+    /*
+     * Area : variable
+     */
     @PrimaryKey
     private int id;
     private String name;
-    private int totalPrice,recipePrice,sellPrice;
-    private String image,description;
+    private int totalPrice, recipePrice, sellPrice;
+    private String image, description;
 
+    /*
+     * Area : function
+     */
     public Item(int id, String name, int totalPrice, int recipePrice, int sellPrice, String image, String description) {
         this.id = id;
         this.name = name;

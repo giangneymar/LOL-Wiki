@@ -1,5 +1,6 @@
 package com.example.lolwiki.ui.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -20,15 +21,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
      * Area : variable
      */
     private LayoutInflater layoutInflater;
-    private List<Item> items;
-    private Context context;
-
-    /*
-     * Area : function
-     */
-    public ItemAdapter(List<Item> items) {
-        this.items = items;
-    }
+    private final List<Item> items;
 
     /*
      * Area : override
@@ -36,7 +29,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
     @NonNull
     @Override
     public ItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = parent.getContext();
         if (layoutInflater == null) {
             layoutInflater = LayoutInflater.from(parent.getContext());
         }
@@ -44,15 +36,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
         return new ItemHolder(binding);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
         Item item = items.get(position);
         if (item != null) {
             holder.binding.nameItem.setText(item.getName());
-            Glide.with(context)
+            Glide.with(holder.itemView)
                     .load(item.getImage())
                     .into(holder.binding.imageItem);
-            holder.binding.description.setText(String.valueOf(item.getDescription()));
+            holder.binding.description.setText(item.getDescription());
             holder.binding.recipePrice.setText("Recipe Price: " + item.getRecipePrice());
             holder.binding.sellPrice.setText("Sell Price: " + item.getSellPrice());
             holder.binding.totalPrice.setText("Total Price: " + item.getTotalPrice());
@@ -62,17 +55,28 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
 
     @Override
     public int getItemCount() {
-        return items.size();
+        if (items != null) {
+            return items.size();
+        }
+        return 0;
     }
+
+    /*
+     * Area : function
+     */
+    public ItemAdapter(List<Item> items) {
+        this.items = items;
+    }
+
 
     /*
      * Area : inner class
      */
-    public class ItemHolder extends RecyclerView.ViewHolder {
+    public static class ItemHolder extends RecyclerView.ViewHolder {
         /*
          * Area : variable
          */
-        private ItemItemBinding binding;
+        private final ItemItemBinding binding;
 
         public ItemHolder(ItemItemBinding binding) {
             super(binding.getRoot());

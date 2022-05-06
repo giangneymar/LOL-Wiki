@@ -5,11 +5,11 @@ import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.lolwiki.data.Repositories;
 import com.example.lolwiki.data.models.Ability;
 import com.example.lolwiki.data.models.Champion;
 import com.example.lolwiki.data.models.Item;
 import com.example.lolwiki.data.models.Wallpaper;
-import com.example.lolwiki.data.Repositories;
 
 import java.util.List;
 

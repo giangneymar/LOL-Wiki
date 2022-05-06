@@ -18,7 +18,8 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_margin="10dp"
-                android:src="@drawable/feedback_yasuo"
+                app:civ_border_color="@color/yellow"
+                app:civ_border_width="1dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,9 +29,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/uvn_cake"
-                android:text="Name"
                 android:textColor="@color/yellow"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@id/image_abilities"
                 app:layout_constraintTop_toTopOf="@id/image_abilities" />
 
@@ -40,9 +40,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/uvn_cake"
-                android:text="Key"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@id/image_abilities"
                 app:layout_constraintStart_toEndOf="@id/image_abilities" />
 
@@ -53,9 +52,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/uvn_cake"
-                android:text="Cost"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/image_abilities" />
 
@@ -66,9 +64,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/uvn_cake"
-                android:text="Cooldown"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cost" />
 
@@ -79,23 +76,20 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/uvn_cake"
-                android:text="Range"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cool_down" />
 
             <TextView
                 android:id="@+id/description"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/uvn_regular"
+                android:layout_margin="10dp"
                 android:textColor="@color/white"
+                android:textSize="20sp"
                 android:textStyle="italic"
-                android:textSize="20dp"
-                android:text="Description"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/range" />
 

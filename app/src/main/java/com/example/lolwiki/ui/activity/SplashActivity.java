@@ -9,7 +9,9 @@ import android.os.Handler;
 import com.example.lolwiki.R;
 
 public class SplashActivity extends AppCompatActivity {
-
+    /*
+     * Area : override
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,11 +19,14 @@ public class SplashActivity extends AppCompatActivity {
         forwardActivity();
     }
 
+    /*
+     * Area : function
+     */
     private void forwardActivity() {
         Handler handler = new Handler();
         handler.postDelayed(() -> {
             startActivity(new Intent(SplashActivity.this, ChampionActivity.class));
             finish();
-        },500);
+        }, 500);
     }
 }

@@ -7,10 +7,16 @@ import java.io.Serializable;
 
 @Entity(tableName = "item_for_champion")
 public class ItemForChampion implements Serializable {
+    /*
+     * Area : variable
+     */
     @PrimaryKey
     private int id;
     private int championId, itemId;
 
+    /*
+     * Area : function
+     */
     public ItemForChampion(int id, int championId, int itemId) {
         this.id = id;
         this.championId = championId;

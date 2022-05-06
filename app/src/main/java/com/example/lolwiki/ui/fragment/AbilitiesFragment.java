@@ -22,30 +22,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AbilitiesFragment extends BaseFragment<FragmentAbilitiesBinding> {
-
-    private AbilitiesAdapter abilitiesAdapter;
-    private List<Ability> abilities;
-    private ViewModel viewModel;
+    /*
+     * Area : override
+     */
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
 
     @Override
     public int getLayoutId() {
         return R.layout.fragment_abilities;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        abilities = new ArrayList<>();
-        abilities.add(new Ability(1, 1, "1", "1", "1", "1", "1", "1", "1"));
-        abilities.add(new Ability(1, 1, "1", "1", "1", "1", "1", "1", "1"));
-        abilitiesAdapter = new AbilitiesAdapter(abilities);
-        binding.containerAbilities.setAdapter(abilitiesAdapter);
-        viewModel = new ViewModelProvider(this).get(ViewModel.class);
-        viewModel.getAbilitiesForChampion(0).observe(getViewLifecycleOwner(), new Observer<List<Ability>>() {
-            @Override
-            public void onChanged(List<Ability> abilities) {
-                Log.d("bbbbbw", abilities.size() + "");
-            }
+    /*
+     * Area : function
+     */
+    public void getChampionID(int id) {
+        ViewModel viewModel = new ViewModelProvider(this).get(ViewModel.class);
+        viewModel.getAbilitiesForChampion(id).observe(getViewLifecycleOwner(), abilities -> {
+            AbilitiesAdapter abilitiesAdapter = new AbilitiesAdapter(abilities);
+            binding.containerAbilities.setAdapter(abilitiesAdapter);
         });
     }
 

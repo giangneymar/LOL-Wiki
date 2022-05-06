@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.lolwiki.R;
-import com.example.lolwiki.databinding.ItemWallpaperBinding;
 import com.example.lolwiki.data.models.Wallpaper;
+import com.example.lolwiki.databinding.ItemWallpaperBinding;
 import com.example.lolwiki.ui.activity.WallpaperDetailActivity;
 
 import java.util.List;
@@ -22,33 +22,8 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Item
     /*
      * Area : variable
      */
-    private List<Wallpaper> wallpapers;
+    private final List<Wallpaper> wallpapers;
     private LayoutInflater layoutInflater;
-
-    /*
-     * Area : function
-     */
-    public WallpaperAdapter(List<Wallpaper> wallpapers) {
-        this.wallpapers = wallpapers;
-    }
-
-    /*
-     * Area : inner class
-     */
-    public class ItemWallpaperHolder extends RecyclerView.ViewHolder {
-        /*
-         * Area : variable
-         */
-        private ItemWallpaperBinding binding;
-
-        /*
-         * Area : function
-         */
-        public ItemWallpaperHolder(ItemWallpaperBinding binding) {
-            super(binding.getRoot());
-            this.binding = binding;
-        }
-    }
 
     /*
      * Area : override
@@ -81,5 +56,30 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Item
             return 0;
         }
         return wallpapers.size();
+    }
+
+    /*
+     * Area : function
+     */
+    public WallpaperAdapter(List<Wallpaper> wallpapers) {
+        this.wallpapers = wallpapers;
+    }
+
+    /*
+     * Area : inner class
+     */
+    public static class ItemWallpaperHolder extends RecyclerView.ViewHolder {
+        /*
+         * Area : variable
+         */
+        private final ItemWallpaperBinding binding;
+
+        /*
+         * Area : function
+         */
+        public ItemWallpaperHolder(ItemWallpaperBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
     }
 }

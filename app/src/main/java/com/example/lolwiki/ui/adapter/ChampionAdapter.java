@@ -2,12 +2,13 @@ package com.example.lolwiki.ui.adapter;
 
 import static com.example.lolwiki.utils.KeyConstant.CHAMPION;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -15,28 +16,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.lolwiki.R;
-import com.example.lolwiki.databinding.ItemChampionBinding;
 import com.example.lolwiki.data.models.Champion;
+import com.example.lolwiki.databinding.ItemChampionBinding;
 import com.example.lolwiki.databinding.ItemChampionSBinding;
 import com.example.lolwiki.ui.activity.ChampionDetailActivity;
 
 import java.util.List;
 
 public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    /*
+     * Area : variable
+     */
     private static final int TYPE_CHAMPION_SUPER = 1;
     private static final int TYPE_CHAMPION = 2;
-    private List<Champion> championList;
-    private Context context;
+    private final List<Champion> championList;
     private LayoutInflater layoutInflater;
 
-    public ChampionAdapter(List<Champion> championList) {
-        this.championList = championList;
-    }
-
+    /*
+     * Area : override
+     */
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = parent.getContext();
         if (TYPE_CHAMPION_SUPER == viewType) {
             if (layoutInflater == null) {
                 layoutInflater = LayoutInflater.from(parent.getContext());
@@ -59,32 +60,24 @@ public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         if (champion != null) {
             if (TYPE_CHAMPION_SUPER == holder.getItemViewType()) {
                 ItemChampionSuperHolder itemChampionSuperHolder = (ItemChampionSuperHolder) holder;
-                Glide.with(context)
+                Glide.with(holder.itemView)
                         .load(champion.getImage())
                         .into(itemChampionSuperHolder.binding.imageChampionS);
                 itemChampionSuperHolder.binding.nameChampionS.setText(champion.getName());
                 itemChampionSuperHolder.binding.getRoot().setOnClickListener(view -> {
-                    switchScreen(view, position);
+                    switchScreen(position);
                 });
             } else if (TYPE_CHAMPION == holder.getItemViewType()) {
                 ItemChampionHolder itemChampionHolder = (ItemChampionHolder) holder;
-                Glide.with(context)
+                Glide.with(holder.itemView)
                         .load(champion.getImage())
                         .into(itemChampionHolder.binding.imageChampion);
                 itemChampionHolder.binding.nameChampion.setText(champion.getName());
                 itemChampionHolder.binding.getRoot().setOnClickListener(view -> {
-                    switchScreen(view, position);
+                    switchScreen(position);
                 });
             }
         }
-    }
-
-    private void switchScreen(View view, int position) {
-        Intent intent = new Intent(view.getContext(), ChampionDetailActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(CHAMPION, championList.get(position));
-        intent.putExtras(bundle);
-        view.getContext().startActivity(intent);
     }
 
     @Override
@@ -103,6 +96,21 @@ public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         } else {
             return TYPE_CHAMPION;
         }
+    }
+
+    /*
+     * Area : function
+     */
+    private void switchScreen(int position) {
+        Intent intent = new Intent(layoutInflater.getContext(), ChampionDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(CHAMPION, championList.get(position));
+        intent.putExtras(bundle);
+        layoutInflater.getContext().startActivity(intent);
+    }
+
+    public ChampionAdapter(List<Champion> championList) {
+        this.championList = championList;
     }
 
     public static class ItemChampionSuperHolder extends RecyclerView.ViewHolder {

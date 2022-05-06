@@ -7,12 +7,18 @@ import java.io.Serializable;
 
 @Entity(tableName = "champion")
 public class Champion implements Serializable, Comparable<Champion> {
+    /*
+     * Area : variable
+     */
     @PrimaryKey
     private int id;
     private String name, image, legacyName, positionName, blueEssence, riotPoints, releaseDate,
             classes, adaptiveType, resource, health, healthRegen, armor, magicResist, moveSpeed,
             attackDamage, attackRange, bonusAS, description, tier;
 
+    /*
+     * Area : function
+     */
     public Champion() {
     }
 

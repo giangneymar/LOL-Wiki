@@ -2,9 +2,6 @@ package com.example.lolwiki.ui.activity;
 
 import static com.example.lolwiki.utils.KeyConstant.WALLPAPER;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.WallpaperManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -12,14 +9,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.lolwiki.R;
-import com.example.lolwiki.databinding.ActivityWallpaperDetailBinding;
 import com.example.lolwiki.data.models.Wallpaper;
+import com.example.lolwiki.databinding.ActivityWallpaperDetailBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
@@ -31,13 +31,22 @@ public class WallpaperDetailActivity extends AppCompatActivity {
     private ActivityWallpaperDetailBinding binding;
     private Wallpaper wallpaper;
 
+    /*
+     * Area : override
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityWallpaperDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getImageFromWallpaperActivity();
-        onClick();
+        clickListener();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
     }
 
     /*
@@ -50,7 +59,7 @@ public class WallpaperDetailActivity extends AppCompatActivity {
                 .into(binding.image);
     }
 
-    private void onClick() {
+    private void clickListener() {
         binding.back.setOnClickListener(view -> onBackPressed());
         binding.done.setOnClickListener(this::setWallpaper);
     }
@@ -82,14 +91,5 @@ public class WallpaperDetailActivity extends AppCompatActivity {
                 return false;
             }
         }).submit();
-    }
-
-    /*
-     * Area : override
-     */
-    @Override
-    public void onBackPressed() {
-        finish();
-        super.onBackPressed();
     }
 }

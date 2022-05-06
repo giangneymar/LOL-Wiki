@@ -4,7 +4,6 @@ import static com.example.lolwiki.utils.KeyConstant.CHAMPION_OVERVIEW;
 import static com.example.lolwiki.utils.KeyConstant.REQUEST_KEY_OVERVIEW;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,23 +18,23 @@ import com.example.lolwiki.data.models.Champion;
 import com.example.lolwiki.databinding.FragmentOverviewBinding;
 
 public class OverviewFragment extends BaseFragment<FragmentOverviewBinding> {
-
-    @Override
-    public int getLayoutId() {
-        return R.layout.fragment_overview;
-    }
-
+    /*
+     * Area : override
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getParentFragmentManager().setFragmentResultListener(REQUEST_KEY_OVERVIEW, this, (requestKey, result) -> {
-            Champion champion = (Champion) result.getSerializable(CHAMPION_OVERVIEW);
-            Log.d("bbbba", champion + "");
+        getParentFragmentManager().setFragmentResultListener(REQUEST_KEY_FRAGMENT, this, (requestKey, result) -> {
+            Champion champion = (Champion) result.getSerializable(CHAMPION_FRAGMENT);
             Glide.with(view).load(champion.getImage()).into(binding.image);
             binding.blueEssence.setText(champion.getBlueEssence());
-           binding.riotPoints.setText(champion.getRiotPoints());
+            binding.riotPoints.setText(champion.getRiotPoints());
             binding.releaseDate.setText(champion.getReleaseDate());
-            binding.tier.setText(champion.getTier());
+            if (champion.getTier().equals("s")) {
+                binding.tier.setText(champion.getTier());
+            } else {
+                binding.tier.setText(R.string.normal);
+            }
             binding.adaptiveType.setText(champion.getAdaptiveType());
             binding.resource.setText(champion.getResource());
             binding.legacyName.setText(champion.getLegacyName());
@@ -51,5 +50,10 @@ public class OverviewFragment extends BaseFragment<FragmentOverviewBinding> {
             binding.bonusAs.setText(champion.getBonusAS());
             binding.description.setText(champion.getDescription());
         });
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.fragment_overview;
     }
 }
