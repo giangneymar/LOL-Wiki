@@ -60,6 +60,7 @@ public class ChampionDetailActivity extends BaseActivity {
         adapter.addFragment(new AbilitiesFragment(), "Abilities");
         adapter.addFragment(new BuildFragment(), "Build");
         binding.viewPager.setAdapter(adapter);
+        binding.viewPager.setOffscreenPageLimit(2);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
         binding.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

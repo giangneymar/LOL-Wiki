@@ -52,8 +52,4 @@ public class OverviewFragment extends BaseFragment<FragmentOverviewBinding> {
             binding.description.setText(champion.getDescription());
         });
     }
-
-    public void getChampion(Champion champion) {
-        Log.d("Ccccccc", champion.getName());
-    }
 }

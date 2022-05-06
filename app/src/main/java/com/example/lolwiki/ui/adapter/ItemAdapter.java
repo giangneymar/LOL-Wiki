@@ -1,5 +1,6 @@
 package com.example.lolwiki.ui.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -7,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.lolwiki.R;
 import com.example.lolwiki.data.models.Item;
 import com.example.lolwiki.databinding.ItemItemBinding;
@@ -19,6 +21,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
      */
     private LayoutInflater layoutInflater;
     private List<Item> items;
+    private Context context;
 
     /*
      * Area : function
@@ -33,6 +36,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
     @NonNull
     @Override
     public ItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        context = parent.getContext();
         if (layoutInflater == null) {
             layoutInflater = LayoutInflater.from(parent.getContext());
         }
@@ -42,7 +46,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
-        holder.binding.nameItem.setText(items.get(position).getName());
+        Item item = items.get(position);
+        if (item != null) {
+            holder.binding.nameItem.setText(item.getName());
+            Glide.with(context)
+                    .load(item.getImage())
+                    .into(holder.binding.imageItem);
+            holder.binding.description.setText(String.valueOf(item.getDescription()));
+            holder.binding.recipePrice.setText("Recipe Price: " + item.getRecipePrice());
+            holder.binding.sellPrice.setText("Sell Price: " + item.getSellPrice());
+            holder.binding.totalPrice.setText("Total Price: " + item.getTotalPrice());
+        }
+
     }
 
     @Override
