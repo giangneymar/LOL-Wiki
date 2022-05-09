@@ -1,5 +1,8 @@
 package com.example.lolwiki.ui.activity;
 
+import static com.example.lolwiki.utils.KeyConstant.DATABASE_NAME;
+import static com.example.lolwiki.utils.KeyConstant.DATABASE_PATH;
+
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
