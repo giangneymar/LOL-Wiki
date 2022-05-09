@@ -16,6 +16,10 @@ import com.example.lolwiki.databinding.ActivityChampionBinding;
 import com.example.lolwiki.ui.adapter.ChampionAdapter;
 import com.example.lolwiki.viewmodels.ViewModel;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,6 +29,9 @@ public class ChampionActivity extends BaseActivity {
      */
     private ActivityChampionBinding binding;
     private ViewModel viewModel;
+    private ChampionAdapter championAdapter;
+    public static String DATABASE_NAME = "lolwiki.sqlite";
+    public static String DATABASE_PATH = "/databases/";
 
     /*
      * Area : override
@@ -44,6 +51,7 @@ public class ChampionActivity extends BaseActivity {
      * Area : function
      */
     private void init() {
+        processAsset();
         setActivityTitle(getString(R.string.champion));
         viewModel = new ViewModelProvider(this).get(ViewModel.class);
         viewModel.getAllChampion().observe(this, champions -> {
@@ -52,13 +60,46 @@ public class ChampionActivity extends BaseActivity {
         });
     }
 
+    private void processAsset() {
+        File file = getDatabasePath(DATABASE_NAME);
+        if (!file.exists()) {
+            copy();
+        } else {
+            file.delete();
+            copy();
+        }
+    }
+
+    private void copy() {
+        try {
+            InputStream inputStream = getAssets().open(DATABASE_NAME);
+            String output = getApplicationInfo().dataDir + DATABASE_PATH + DATABASE_NAME;
+            File file = new File(getApplicationInfo().dataDir + DATABASE_PATH);
+            if (!file.exists()) {
+                file.mkdir();
+            }
+
+            OutputStream outputStream = new FileOutputStream(output);
+            byte[] bytes = new byte[1024];
+            int len;
+            while ((len = inputStream.read(bytes)) > 0) {
+                outputStream.write(bytes, 0, len);
+            }
+            outputStream.flush();
+            inputStream.close();
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void updateRecyclerViewChampion(List<Champion> champions) {
         binding.containerChampion.setLayoutManager(new GridLayoutManager(this, 4));
-        ChampionAdapter championAdapter = new ChampionAdapter(champions);
+        championAdapter = new ChampionAdapter(champions);
         binding.containerChampion.setAdapter(championAdapter);
     }
 
-    @SuppressLint("ResourceAsColor")
+    @SuppressLint({"ResourceAsColor", "NotifyDataSetChanged"})
     private void clickListener() {
         binding.positionJungle.setOnClickListener(view -> viewModel.filterChampionsByPosition(getString(R.string.position_jungle)).observe(this, champions -> {
             binding.positionJungle.setBorderColor(Color.YELLOW);
@@ -67,7 +108,8 @@ public class ChampionActivity extends BaseActivity {
             binding.positionBot.setBorderColor(R.color.as_black);
             binding.positionMid.setBorderColor(R.color.as_black);
             Collections.sort(champions, Collections.reverseOrder());
-            updateRecyclerViewChampion(champions);
+            championAdapter.addAll(champions);
+            championAdapter.notifyDataSetChanged();
         }));
 
         binding.positionTop.setOnClickListener(view -> viewModel.filterChampionsByPosition(getString(R.string.position_top)).observe(this, champions -> {

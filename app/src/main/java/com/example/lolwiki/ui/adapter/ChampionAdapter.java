@@ -29,7 +29,7 @@ public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
      */
     private static final int TYPE_CHAMPION_SUPER = 1;
     private static final int TYPE_CHAMPION = 2;
-    private final List<Champion> championList;
+    private List<Champion> championList;
     private LayoutInflater layoutInflater;
 
     /*
@@ -129,5 +129,12 @@ public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             super(binding.getRoot());
             this.binding = binding;
         }
+    }
+
+    public void addAll(List<Champion> data) {
+        if (championList != null) {
+            championList.clear();
+        }
+        this.championList = data;
     }
 }
